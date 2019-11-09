@@ -1,0 +1,7 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/CoreCodedChatbot.Client/.vs/CoreCodedChatbot.Client
+/CoreCodedChatbot.Client/CoreCodedChatbot.Client/bin/Debug/netcoreapp3.0
+/CoreCodedChatbot.Client/CoreCodedChatbot.Client/obj
