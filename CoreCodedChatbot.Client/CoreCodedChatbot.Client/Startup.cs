@@ -1,3 +1,4 @@
+using System;
 using CoreCodedChatbot.ApiClient;
 using CoreCodedChatbot.Client.Interfaces;
 using CoreCodedChatbot.Config;
@@ -38,13 +39,10 @@ namespace CoreCodedChatbot.Client
                 .AddGuessingGameServices();
 
             services.AddMvc();
-
-            services.BuildServiceProvider()
-                .GetService<IGuessingGameService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, IServiceProvider provider)
         {
             if (env.IsDevelopment())
             {
@@ -56,6 +54,8 @@ namespace CoreCodedChatbot.Client
             }
 
             app.UseStaticFiles();
+                
+            provider.GetService<IGuessingGameService>();
 
             app.UseRouting();
 
