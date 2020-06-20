@@ -8,9 +8,6 @@ trigger:
 
 pr: none
 
-pool:
-  vmImage: 'ubuntu-latest'
-
 name: 1.0.$(BuildID)
 
 steps:
@@ -24,12 +21,11 @@ steps:
   inputs:
     command: 'build'
     projects: '**/*.csproj'
-    arguments: '--configuration $(BuildConfiguration)'
 - task: DotNetCoreCLI@2
   inputs:
     command: 'publish'
     publishWebProjects: true
-    arguments: '--configuration $(BuildConfiguration) --output $(build.artifactstagingdirectory)'
+    arguments: '--output $(build.artifactstagingdirectory)'
 - task: PublishBuildArtifacts@1
   displayName: 'Publish Artifact: ClientAppDrop copy'
   inputs:
