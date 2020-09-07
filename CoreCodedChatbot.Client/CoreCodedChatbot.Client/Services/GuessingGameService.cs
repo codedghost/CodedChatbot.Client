@@ -32,6 +32,13 @@ namespace CoreCodedChatbot.Client.Services
             // File watcher is triggered a lot due to the file being continually written to.
             _checkFileTimer = new Timer(async x => await CheckRocksnifferFiles(),
                 null, TimeSpan.FromSeconds(0), TimeSpan.FromSeconds(1));
+
+            InitialiseGuessingGame();
+        }
+
+        private async void InitialiseGuessingGame()
+        {
+            await _guessingGameApiClient.InitialiseGuessingGame();
         }
 
         private async Task CheckRocksnifferFiles()
