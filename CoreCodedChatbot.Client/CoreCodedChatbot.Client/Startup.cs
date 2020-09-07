@@ -1,4 +1,5 @@
 using System;
+using CodedGhost.Config;
 using CoreCodedChatbot.ApiClient;
 using CoreCodedChatbot.Client.Interfaces;
 using CoreCodedChatbot.Config;
@@ -25,10 +26,6 @@ namespace CoreCodedChatbot.Client
         public void ConfigureServices(IServiceCollection services)
         {
             var configService = new ConfigService();
-            var secretService = new AzureKeyVaultService(configService.Get<string>("KeyVaultAppId"),
-                configService.Get<string>("KeyVaultCertThumbprint"),
-                configService.Get<string>("KeyVaultBaseUrl"));
-            secretService.Initialize();
 
             services.AddOptions();
             services.AddMemoryCache();
@@ -40,7 +37,7 @@ namespace CoreCodedChatbot.Client
                     configService.Get<string>("KeyVaultCertThumbprint"),
                     configService.Get<string>("KeyVaultBaseUrl")
                 )
-                .AddChatbotNLog(secretService)
+                .AddChatbotNLog()
                 .AddApiClientServices()
                 .AddGuessingGameServices();
 

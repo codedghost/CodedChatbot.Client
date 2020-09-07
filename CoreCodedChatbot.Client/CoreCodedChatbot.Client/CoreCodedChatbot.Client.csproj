@@ -5,8 +5,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="CoreCodedChatbot.ApiClient" Version="1.0.665" />
-    <PackageReference Include="CoreCodedChatbot.Logging" Version="1.0.401" />
+    <PackageReference Include="CoreCodedChatbot.ApiClient" Version="1.0.741" />
+    <PackageReference Include="CoreCodedChatbot.Logging" Version="1.0.743" />
+    <PackageReference Include="CoreCodedChatbot.Secrets" Version="1.0.733" />
   </ItemGroup>
 
 </Project>
