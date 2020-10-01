@@ -33,3 +33,7 @@ body {
         display: none;
     }
 }
+
+.album-art-container {
+    max-width: 200px;
+}

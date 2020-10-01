@@ -1,6 +1,7 @@
 using System;
 using CodedGhost.Config;
 using CoreCodedChatbot.ApiClient;
+using CoreCodedChatbot.Client.Hubs;
 using CoreCodedChatbot.Client.Interfaces;
 using CoreCodedChatbot.Config;
 using CoreCodedChatbot.Logging;
@@ -41,7 +42,11 @@ namespace CoreCodedChatbot.Client
                 .AddApiClientServices()
                 .AddGuessingGameServices();
 
-            services.AddMvc();
+            services.AddControllersWithViews();
+            services.AddRazorPages();
+            services.AddSignalR();
+
+            services.AddRouting();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -62,9 +67,12 @@ namespace CoreCodedChatbot.Client
 
             app.UseRouting();
 
+            
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapDefaultControllerRoute();
+                endpoints.MapRazorPages();
+                endpoints.MapHub<BackgroundSongHub>("/CurrentSong");
             });
         }
     }

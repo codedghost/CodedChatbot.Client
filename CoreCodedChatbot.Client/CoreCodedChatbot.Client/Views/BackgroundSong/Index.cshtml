@@ -1,0 +1,45 @@
+﻿<head>
+    <script src="~/lib/signalr/signalr.js"></script>
+    <script src="~/lib/jquery/dist/jquery.js"></script>
+    <link href="~/css/site.css" rel="stylesheet" />
+    <link href="~/css/Player.css" rel="stylesheet" />
+    <link href="~/css/bootstrap.min.css" rel="stylesheet" />
+</head>
+<div class="player">
+    <div id="control-panel" class="control-panel info active">
+        <span id="SongArtist" class="artist"></span>
+        <span id="SongName" class="name"></span>
+        <img id="AlbumArtImage" class="album-art" src="" />
+    </div>
+</div>
+
+<script>
+
+    var connection = new signalR.HubConnectionBuilder()
+        .withUrl("/CurrentSong")
+        .build();
+
+    connection.onClosed = e => {
+        console.log('connection closed');
+    };
+
+    connection.on('UpdateSongInfo', (data) => {
+        if (data.trackModel.title !== $("#SongName").text) {
+            $("#SongName").text(data.trackModel.title);
+        }
+        if (data.trackModel.author !== $("#SongArtist").text) {
+            $("#SongArtist").text(data.trackModel.author);
+        }
+        if (data.trackModel.album !== $("#SongAlbum").text) {
+            $("#SongAlbum").text(data.trackModel.album);
+        }
+        if (data.trackModel.coverUrl !== $("#AlbumArtImage").attr("src")) {
+            $("#AlbumArtImage").attr("src", data.trackModel.coverUrl);
+        }
+    });
+
+    connection.start().catch(err => {
+        console.log('connection error');
+    });
+
+</script>
