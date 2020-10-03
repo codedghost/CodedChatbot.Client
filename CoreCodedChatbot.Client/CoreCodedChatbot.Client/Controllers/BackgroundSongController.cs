@@ -27,7 +27,10 @@ namespace CoreCodedChatbot.Client.Controllers
 
         public IActionResult Index()
         {
-            var hubUrl = $"https://{Request.Host}/CurrentSong";
+            var securityLevel = Request.IsHttps ? "https://" : "http://";
+
+            var hubUrl = $"{securityLevel}{Request.Host}/CurrentSong";
+            
             Console.Out.WriteLine(hubUrl);
 
             _signalRConnection = new HubConnectionBuilder()
