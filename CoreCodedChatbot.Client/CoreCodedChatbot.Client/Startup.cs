@@ -40,7 +40,7 @@ namespace CoreCodedChatbot.Client
                 )
                 .AddChatbotNLog()
                 .AddApiClientServices()
-                .AddGuessingGameServices();
+                .AddClientServices();
 
             services.AddControllersWithViews();
             services.AddRazorPages();
@@ -72,7 +72,7 @@ namespace CoreCodedChatbot.Client
             {
                 endpoints.MapDefaultControllerRoute();
                 endpoints.MapRazorPages();
-                endpoints.MapHub<BackgroundSongHub>("/CurrentSong");
+                endpoints.MapHub<BackgroundSongHub>(HubConstants.BackgroundSongPath);
             });
         }
     }

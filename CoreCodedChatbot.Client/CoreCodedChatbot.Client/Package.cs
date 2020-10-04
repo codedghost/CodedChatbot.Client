@@ -6,9 +6,13 @@ namespace CoreCodedChatbot.Client
 {
     public static class Package
     {
-        public static IServiceCollection AddGuessingGameServices(this IServiceCollection services)
+        public static IServiceCollection AddClientServices(this IServiceCollection services)
         {
             services.AddSingleton<IGuessingGameService, GuessingGameService>();
+
+            services.AddSingleton<IGetLocalHubUrlService, GetLocalHubUrlService>();
+
+            services.AddSingleton<IYTMusicPlayerService, YTMusicPlayerService>();
 
             return services;
         }

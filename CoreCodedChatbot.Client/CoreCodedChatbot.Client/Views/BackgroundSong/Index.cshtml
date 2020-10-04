@@ -1,4 +1,6 @@
-﻿<head>
+﻿@using CoreCodedChatbot.Client.Hubs
+
+<head>
     <script src="~/lib/signalr/signalr.js"></script>
     <script src="~/lib/jquery/dist/jquery.js"></script>
     <link href="~/css/site.css" rel="stylesheet" />
@@ -16,7 +18,7 @@
 <script>
 
     var connection = new signalR.HubConnectionBuilder()
-        .withUrl("/CurrentSong")
+        .withUrl("@HubConstants.BackgroundSongPath")
         .build();
 
     connection.onClosed = e => {
