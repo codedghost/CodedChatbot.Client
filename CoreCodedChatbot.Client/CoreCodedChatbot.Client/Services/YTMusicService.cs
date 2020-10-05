@@ -36,7 +36,6 @@ namespace CoreCodedChatbot.Client.Services
             var data = JsonConvert.DeserializeObject<PlaybackModel>(contentString);
 
             return data;
-
         }
     }
 }

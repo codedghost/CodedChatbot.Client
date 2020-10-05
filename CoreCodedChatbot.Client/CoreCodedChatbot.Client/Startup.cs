@@ -66,13 +66,14 @@ namespace CoreCodedChatbot.Client
 
             app.UseRouting();
 
-            
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapDefaultControllerRoute();
                 endpoints.MapRazorPages();
                 endpoints.MapHub<BackgroundSongHub>(HubConstants.BackgroundSongPath);
             });
+
+            var apiSignalRService = provider.GetService<IApiSignalRService>();
         }
     }
 }

@@ -8,6 +8,8 @@ namespace CoreCodedChatbot.Client
     {
         public static IServiceCollection AddClientServices(this IServiceCollection services)
         {
+            services.AddSingleton<IApiSignalRService, ApiSignalRService>();
+
             services.AddSingleton<IGuessingGameService, GuessingGameService>();
 
             services.AddSingleton<IGetLocalHubUrlService, GetLocalHubUrlService>();
