@@ -8,7 +8,6 @@ using CoreCodedChatbot.Client.Interfaces;
 using CoreCodedChatbot.Config;
 using CoreCodedChatbot.Secrets;
 using Microsoft.AspNetCore.SignalR.Client;
-using Microsoft.Azure.KeyVault.Models;
 
 namespace CoreCodedChatbot.Client.Services
 {
