@@ -11,7 +11,7 @@ namespace CoreCodedChatbot.Client.Models
         public bool IsPaused { get; set; }
 
         [JsonProperty("volumePercent")]
-        public int VolumePercent { get; set; }
+        public float VolumePercent { get; set; }
 
         [JsonProperty("seekbarCurrentPosition")]
         public int SeekbarCurrentPositionSeconds { get; set; }
