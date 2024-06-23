@@ -4,7 +4,6 @@ using CoreCodedChatbot.ApiClient;
 using CoreCodedChatbot.Client.Hubs;
 using CoreCodedChatbot.Client.Interfaces;
 using CoreCodedChatbot.Config;
-using CoreCodedChatbot.Logging;
 using CoreCodedChatbot.Secrets;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;

@@ -1,20 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
-using System.Net.Http;
-using System.Runtime.CompilerServices;
 using System.Threading;
-using System.Threading.Tasks;
 using CoreCodedChatbot.Client.Hubs;
 using CoreCodedChatbot.Client.Interfaces;
 using CoreCodedChatbot.Client.Models;
-using CoreCodedChatbot.Config;
-using Microsoft.AspNetCore.Http.Extensions;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.SignalR;
 using Microsoft.AspNetCore.SignalR.Client;
-using Newtonsoft.Json;
 
 namespace CoreCodedChatbot.Client.Controllers
 {
@@ -38,11 +29,14 @@ namespace CoreCodedChatbot.Client.Controllers
 
             Console.Out.WriteLine(hubUrl);
 
-            _signalRConnection = new HubConnectionBuilder()
-                .WithUrl(hubUrl)
-                .Build();
+            if (_signalRConnection != null)
+            {
+                _signalRConnection = new HubConnectionBuilder()
+                    .WithUrl(hubUrl)
+                    .Build();
 
-            _signalRConnection.StartAsync().Wait();
+                _signalRConnection.StartAsync().Wait();
+            }
 
             _checkCurrentSongTimer = new Timer(async timer =>
             {
